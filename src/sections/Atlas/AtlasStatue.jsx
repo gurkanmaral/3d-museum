@@ -4,6 +4,8 @@ import { Apollo } from '../../models/Apollo'
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Atlas } from '../../models/Atlas'
+import arrowUp from "../../assets/images/arrow.svg"
+import arrowDown from "../../assets/images/arrowDown.svg"
 
 
 const AtlasStatue = () => {
@@ -15,7 +17,7 @@ const adjustZeusForScreenSize = ()=>{
     let screenPosition = [0,-0.75,0];
     let zeusRotation = [0.1,4.7,0]
     if(window.innerWidth < 768){
-        screenScale = [0,9,0.9,0.9];
+        screenScale = [0.3,0.3,0.3];
     }else{
         screenScale = [0.35,0.35,0.35];
     }
@@ -26,8 +28,8 @@ const adjustZeusForScreenSize = ()=>{
 
 
   return (
-    <div className='w-full  h-screen border border-black flex flex-row'>
-    <div className='w-[50%]'>
+    <div className='w-full  h-screen flex flex-col md:flex-row'>
+    <div className='w-full md:w-[50%]'>
     <Canvas
      camera={{
          position: [0, 0, 5],
@@ -38,10 +40,9 @@ const adjustZeusForScreenSize = ()=>{
        className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
      >
          <Suspense fallback={"Loading..."}>
-         <directionalLight position={[1, 0, 1]} intensity={2} color="#ff0000" />
-         <ambientLight intensity={3} />
- <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1} />
-
+         <directionalLight position={[1, 1, 0]} intensity={3} color="#fff" />
+         <directionalLight position={[-5, 0, 0]} intensity={2} color="#fff" />
+        
      <OrbitControls enableZoom={true} />
              <Atlas
              position={zeusPosition}
@@ -52,7 +53,7 @@ const adjustZeusForScreenSize = ()=>{
      </Suspense>
      </Canvas>
     </div>
-    <div className='w-[50%] h-full flex items-start justify-center flex-col p-2'>
+    <div className='w-full md:w-[50%] h-full flex items-start justify-center flex-col p-2'>
          <h1 className='text-xl font-semibold'>Atlas</h1>
          <p className='text-base'>
          Atlas was a Titan, one of the ancient race of gods that preceded the Olympians. Titans were the children of Gaia (Earth) and Uranus (Sky).

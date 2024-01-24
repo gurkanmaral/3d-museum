@@ -14,7 +14,7 @@ const adjustZeusForScreenSize = ()=>{
     let screenPosition = [0,-0.5,0];
     let zeusRotation = [0.1,4.7,0]
     if(window.innerWidth < 768){
-        screenScale = [0,9,0.9,0.9];
+        screenScale = [0.2, 0.2, 0.2];
     }else{
         screenScale = [0.35,0.35,0.35];
     }
@@ -25,8 +25,8 @@ const adjustZeusForScreenSize = ()=>{
 
 
   return (
-    <div className='w-full  h-screen border border-black flex flex-row'>
-    <div className='w-[50%]'>
+    <div className='w-full  h-screen  flex flex-col md:flex-row'>
+    <div className='w-full md:w-[50%]'>
     <Canvas
      camera={{
          position: [0, 0, 5],
@@ -51,7 +51,7 @@ const adjustZeusForScreenSize = ()=>{
      </Suspense>
      </Canvas>
     </div>
-    <div className='w-[50%] h-full flex items-start justify-center flex-col p-2'>
+    <div className='w-full md:w-[50%] h-full flex items-start justify-center flex-col p-2'>
          <h1 className='text-xl font-semibold'>Apollo and Daphne</h1>
          <p className='text-base'>
          Characters:

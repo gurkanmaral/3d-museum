@@ -4,6 +4,8 @@ import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { Zeus } from '../../models/Zeus';
 import { OrbitControls } from '@react-three/drei';
 
+
+
 const ZeusStatue = () => {
     const orbitControlsRef = useRef();
     const [isRotating, setIsRotating] = useState(true);
@@ -13,7 +15,7 @@ const adjustZeusForScreenSize = ()=>{
     let screenPosition = [0,-1.5,0];
     let zeusRotation = [0.1,4.7,0]
     if(window.innerWidth < 768){
-        screenScale = [0,9,0.9,0.9];
+        screenScale = [0.3, 0.3, 0.3];
     }else{
         screenScale = [0.25,0.25,0.25];
     }
@@ -24,8 +26,8 @@ const adjustZeusForScreenSize = ()=>{
 
 
   return (
-    <div className='w-full  h-screen border border-black flex flex-row'>
-           <div className='w-[50%]'>
+    <div className='w-full  h-screen  flex flex-col md:flex-row'>
+           <div className='w-full  md:w-[50%]'>
            <Canvas 
             camera={{
                 position: [0, 0, 5],
@@ -50,7 +52,7 @@ const adjustZeusForScreenSize = ()=>{
             </Suspense>
             </Canvas>
            </div>
-           <div className='w-[50%] h-full flex items-start justify-center flex-col p-2'>
+           <div className='w-full md:w-[50%] h-full flex items-start justify-center flex-col p-2'>
                 <p className='text-base'>
                 Zeus is one of the most prominent figures in ancient Greek mythology. Known as the king of the gods, he ruled over Mount Olympus and was revered as the god of the sky, thunder, and lightning.
                 </p>
@@ -59,7 +61,9 @@ const adjustZeusForScreenSize = ()=>{
                 <p className='text-base'>
                 Zeus is the son of the Titans Cronus and Rhea. According to myth, Cronus swallowed each of his children at birth to prevent a prophecy that he would be overthrown by one of them. However, Rhea saved Zeus by hiding him in a cave and giving Cronus a stone wrapped in swaddling clothes to swallow instead. Zeus grew up in secret and eventually forced Cronus to regurgitate his siblings, leading to a battle for control of the universe.
                 </p>
+                
            </div>
+           
     </div>
   )
 }
